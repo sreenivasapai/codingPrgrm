@@ -1,0 +1,30 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# Build / runtime
+*.class
+*.log
+
+# Large/installers
+*.exe
+*.zip
+*.tar.gz
+*.iso
+
+# JDK folder
+openjdk-25/
+openJdk-25/
+
+# Python envs
+venv/
+.env/
+.envrc
+.env.local
+
+# Node
+node_modules/
