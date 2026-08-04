@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Odd Or Even</title>
+    <script>
+        function CheckOddEven() {
+            var num = Number(document.getElementById("num").value);
+
+            if (num % 2 == 0)
+                document.getElementById("Result").value = "EVEN";
+            else
+                document.getElementById("Result").value = "ODD";
+        }
+
+        function ClearFields() {
+            document.getElementById("num").value = "";
+            document.getElementById("Result").value = "";
+            document.getElementById("num").focus();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Check Even or Odd</h1>
+
+    Enter Number:
+    <input type="text" id="num"><br><br>
+
+    Result:
+    <input type="text" id="Result" readonly><br><br>
+
+    <button onclick="CheckOddEven()">Check</button>
+    <button onclick="ClearFields()">Clear</button>
+</body>
+
+</html>

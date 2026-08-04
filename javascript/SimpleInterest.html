@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Interest Calculator</title>
+    <script>
+        function calculateSI() {
+            var p = Number(document.getElementById("principal").value);
+            var r = Number(document.getElementById("rate").value);
+            var t = Number(document.getElementById("time").value);
+
+            var si = (p * r * t) / 100;
+
+            document.getElementById("result").value = si;
+        }
+
+        function clearFields() {
+            document.getElementById("principal").value = "";
+            document.getElementById("rate").value = "";
+            document.getElementById("time").value = "";
+            document.getElementById("result").value = "";
+            document.getElementById("principal").focus();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Simple Interest Calculator</h1>
+
+    Principal:
+    <input type="text" id="principal"><br><br>
+
+    Rate (%):
+    <input type="text" id="rate"><br><br>
+
+    Time (Years):
+    <input type="text" id="time"><br><br>
+
+    Simple Interest:
+    <input type="text" id="result" readonly><br><br>
+
+    <button onclick="calculateSI()">Calculate</button>
+    <button onclick="clearFields()">Clear</button>
+</body>
+
+</html>

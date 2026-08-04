@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Square Of A Number</title>
+        <script>
+            function findSquare(){
+                var num = document.getElementById("num").value;
+                let square = num*num;
+                document.getElementById("result").value = square;
+            }
+            function clearFields(){
+                document.getElementById("num").value = "";
+                document.getElementById("result").value = "";
+                document.getElementById("num").focus();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>SQUARE OF A NUMBER</h1>
+        <p>Enter a number to find its square:</p>
+        <input type="text" id="num"><br><br>
+
+        <p>Result:</p>
+        <input type="text" id ="result" readonly><br><br>
+        <button onclick="findSquare()">Square</button>
+        <button onclick="clearFields()">Clear</button>
+    </body>
+</html>
