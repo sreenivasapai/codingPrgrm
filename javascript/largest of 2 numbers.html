@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Largest Of 2 Numbers</title>
+    <script>
+        function FindLargest(){
+            var num1 = Number(document.getElementById("num1").value);
+            var num2 = Number(document.getElementById("num2").value);
+            var Largest;
+            if (num1 > num2){
+                Largest = num1;
+            } else {
+                Largest = num2;
+            }
+            document.getElementById("num3").value = Largest;
+        }
+        function clearFields() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("num3").value = "";
+            document.getElementById("num1").focus();
+        }
+    </script>
+</head> 
+<body>
+    <h1>Find Largest Of 2 Numbers</h1>
+    ENTER NUMBER 1 : <input type ="text" id ="num1"><br><br>
+    ENTER NUMBER 2 : <input type ="text" id ="num2"><br><br>
+    RESULT : <input type ="text" id ="num3" readonly><br><br>
+    <button type="button" onclick="FindLargest()">ok</button>
+    clear : <button type="button" onclick="clearFields()">Clear</button>
+</body>   
+</html>
