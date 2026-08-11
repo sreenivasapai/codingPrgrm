@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Temperature Conversion</title>
+
+    <script type="text/javascript">
+
+        function CelsiusToFahrenheit()
+        {
+            var c = Number(document.getElementById("celsius").value);
+            var f = (c * 9/5) + 32;
+
+            document.getElementById("fahrenheit").value = f;
+        }
+
+        function FahrenheitToCelsius()
+        {
+            var f = Number(document.getElementById("fahrenheit").value);
+            var c = (f - 32) * 5/9;
+
+            document.getElementById("celsius").value = c;
+        }
+
+        function iclear()
+        {
+            document.getElementById("celsius").value = "";
+            document.getElementById("fahrenheit").value = "";
+            document.getElementById("celsius").focus();
+        }
+
+    </script>
+</head>
+
+<body>
+
+<form>
+
+    Celsius :
+    <input type="text" id="celsius">
+    <br><br>
+
+    Fahrenheit :
+    <input type="text" id="fahrenheit">
+    <br><br>
+
+    <button type="button" onclick="CelsiusToFahrenheit()">
+        Celsius to Fahrenheit
+    </button>
+
+    <button type="button" onclick="FahrenheitToCelsius()">
+        Fahrenheit to Celsius
+    </button>
+
+    <button type="button" onclick="iclear()">
+        Clear
+    </button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Factorial of Natural Number</title>
+        <script type="text/javascript">
+        function PrintNO()
+        {
+           var n=Number(document.getElementById("no1").value);
+           var n1=1;
+           for(i=n;i>0;i--)
+           {
+            n1*=i;
+            }
+            document.write(n1);
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Finding Factorial of N Natural Numbers</h1>
+        <form>
+             Number 1 : <input type="text" id="no1"><br><br>
+            <button type="button" onclick="PrintNO()">Find</button>
+        </form>
+    </body>
+    </html>
+    

@@ -1,0 +1,19 @@
+<h2>Multiples of 5</h2>
+
+<input type="number" id="num" placeholder="Enter a number">
+<button onclick="printMultiples()">Print</button>
+
+<div id="result"></div>
+
+<script>
+    function printMultiples() {
+        let n = document.getElementById("num").value;
+        let result = "";
+
+        for (let i = 1; i <= n; i++) {
+            result += (5 * i) + "<br>";
+        }
+
+        document.getElementById("result").innerHTML = result;
+    }
+</script>

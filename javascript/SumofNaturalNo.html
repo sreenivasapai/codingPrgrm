@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Sum of NAtural Number</title>
+        <script type="text/javascript">
+        function PrintNO()
+        {
+           var n=Number(document.getElementById("no1").value);
+           var n1=0;
+           for(i=1;i<=n;i++)
+           {
+            n1+=i;
+            }
+            document.write(n1);
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Finding Sum of N Natural Numbers</h1>
+        <form>
+             Number 1 : <input type="text" id="no1"><br><br>
+            <button type="button" onclick="PrintNO()">Find</button>
+        </form>
+    </body>
+    </html>
+    
