@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>datetime on click</title>
+        <script language="javascript" type ="text/javascript">
+            function displayDattime(){
+                var d = new Date();
+                document.getElementById("datetime").innerHTML = d;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>DISPLAY DATE AND TIME ON CLICK</h1>
+        <button type="button" onclick="displayDattime()">CLICK ME</button>
+        <p id="datetime"></p>
+    </body>
+</html>
