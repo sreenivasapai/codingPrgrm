@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+
+    <script type="text/javascript">
+
+        function Calculate()
+        {
+            var name = document.getElementById("name").value;
+            var regno = document.getElementById("regno").value;
+            var marks = Number(document.getElementById("marks").value);
+            var grade;
+
+            if(marks >= 90)
+                grade = "A+";
+            else if(marks >= 80)
+                grade = "A";
+            else if(marks >= 70)
+                grade = "B";
+            else if(marks >= 60)
+                grade = "C";
+            else if(marks >= 50)
+                grade = "D";
+            else if(marks >= 40)
+                grade = "E";
+            else
+                grade = "F - Fail";
+
+            document.getElementById("res").value = grade;
+        }
+
+        function Clear()
+        {
+            document.getElementById("name").value = "";
+            document.getElementById("regno").value = "";
+            document.getElementById("marks").value = "";
+            document.getElementById("res").value = "";
+            document.getElementById("name").focus();
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<h1>JavaScript Grade Calculator</h1>
+
+<form>
+
+Name :
+<input type="text" id="name"><br><br>
+
+Register No :
+<input type="text" id="regno"><br><br>
+
+Marks :
+<input type="text" id="marks"><br><br>
+
+Grade :
+<input type="text" id="res" readonly><br><br>
+
+<input type="button" value="Calculate" onclick="Calculate()">
+<input type="button" value="Clear" onclick="Clear()">
+
+</form>
+
+</body>
+</html>

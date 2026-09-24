@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table</title>
+
+    <script type="text/javascript">
+
+        function Table()
+        {
+            var a = Number(document.getElementById("num").value);
+            var result = "";
+
+            for(var i = 1; i <= 10; i++)
+            {
+                result = result + a + " x " + i + " = " + (a * i) + "<br>";
+            }
+
+            document.getElementById("res").innerHTML = result;
+        }
+
+        function Clear()
+        {
+            document.getElementById("num").value = "";
+            document.getElementById("res").innerHTML = "";
+            document.getElementById("num").focus();
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<h1>Multiplication Table</h1>
+
+<form>
+
+Enter Number :
+<input type="text" id="num"><br><br>
+
+<input type="button" value="Display Table" onclick="Table()">
+<input type="button" value="Clear" onclick="Clear()">
+
+<br><br>
+
+<div id="res"></div>
+
+</form>
+
+</body>
+</html>
