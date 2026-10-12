@@ -1,0 +1,468 @@
+Microsoft Windows [Version 10.0.26200.9457]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\sreen>mongosh
+Current Mongosh Log ID: 6ac5db684fc81f5d6ed33d7e
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.13.0
+Using MongoDB:          8.2.12
+Using Mongosh:          2.13.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-10-06T08:39:22.993+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin   40.00 KiB
+config  36.00 KiB
+local   40.00 KiB
+test> use college
+switched to db college
+college> db.createCollection("students")
+{ ok: 1 }
+college> show collections
+students
+college> show dbs
+admin    40.00 KiB
+college   8.00 KiB
+config   72.00 KiB
+local    40.00 KiB
+college> show collections
+students
+college> db.students.insertOne({
+| rollno:101,
+| name:"Ashwin",
+| course:"MCA",
+| semester:3,
+| mark:44
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6ac5dd1e4fc81f5d6ed33d7f')
+}
+college> show collections
+students
+college> show students
+MongoshInvalidInputError: [COMMON-10001] 'students' is not a valid argument for "show".
+college> show fields
+MongoshInvalidInputError: [COMMON-10001] 'fields' is not a valid argument for "show".
+college> show Fields
+MongoshInvalidInputError: [COMMON-10001] 'Fields' is not a valid argument for "show".
+college> db.students.insertMany([
+| {
+| rollno:102,
+| name:"Nandu"
+| course:"MCA"
+Uncaught:
+SyntaxError: Unexpected token, expected "," (5:0)
+
+  3 | rollno:102,
+  4 | name:"Nandu"
+> 5 | course:"MCA"
+    | ^
+  6 |
+
+college> db.students.insertMany([ { rollno:102, name:"Nandu" course:"MCA"
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:52)
+
+> 1 | db.students.insertMany([ { rollno:102, name:"Nandu" course:"MCA"
+    |                                                     ^
+  2 |
+
+college> db.students.insertMany([ { rollno:102, name:"Nandu" course:"MCA",
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:52)
+
+> 1 | db.students.insertMany([ { rollno:102, name:"Nandu" course:"MCA",
+    |                                                     ^
+  2 |
+
+college> db.students.insertMany([
+| { rollno:102,
+| name:"Nandu",
+| course:"MCA",
+| semester:3,
+| mark:30
+| },{ rollno:102,
+| | name:"Nandu",
+| | course:"MCA",
+| | semester:3,
+| | mark:30
+| | },
+Uncaught:
+SyntaxError: Unexpected token (8:0)
+
+   6 | mark:30
+   7 | },{ rollno:102,
+>  8 | | name:"Nandu",
+     | ^
+   9 | | course:"MCA",
+  10 | | semester:3,
+  11 | | mark:30
+
+college> db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{ rollno:102, | name:"Nandu", | course:"MCA", | semester:3, | mark:30 | },
+Uncaught:
+SyntaxError: Unexpected token (1:103)
+
+> 1 | db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{ rollno:102, | name:"Nandu", | course:"MCA", | semester:3, | mark:30 | },
+    |                                                                                                        ^
+  2 |
+
+college> db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{ rollno:102, | name:"college> db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{ rollno:103, | name:"Tharun", | course:"MCA", | semester:3, | mark:48 | },{ rollno:104,
+| | name:"Gokul",
+| | course:"MCA",
+| | semester:3,
+| | mark:39
+| | }])
+Uncaught:
+SyntaxError: Unexpected token (1:103)
+
+> 1 | db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{ rollno:103, | name:"Tharun", | course:"MCA", | semester:3, | mark:48 | },{ rollno:104,
+    |                                                                                                        ^
+  2 | | name:"Gokul",
+  3 | | course:"MCA",
+  4 | | semester:3,
+
+college> db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{rollno:103,name:"Tharun",course:"MCA",semester:3,mark:48 },{ rollno:104,
+| | name:"Gokul",
+| | course:"MCA",
+| | semester:3,
+| | mark:39
+| | }])
+Uncaught:
+SyntaxError: Unexpected token (2:0)
+
+  1 | db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{rollno:103,name:"Tharun",course:"MCA",semester:3,mark:48 },{ rollno:104,
+> 2 | | name:"Gokul",
+    | ^
+  3 | | course:"MCA",
+  4 | | semester:3,
+  5 | | mark:39
+
+college> db.students.insertMany([ { rollno:102, name:"Nandu", course:"MCA", semester:3, mark:30 },{rollno:103,name:"Tharun",course:"MCA",semester:3,mark:48 },{ rollno:104, name:"Gokul",course:"MCA",semester:3, mark:39 }])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ac5de874fc81f5d6ed33d80'),
+    '1': ObjectId('6ac5de874fc81f5d6ed33d81'),
+    '2': ObjectId('6ac5de874fc81f5d6ed33d82')
+  }
+}
+college> db.students.find()
+[
+  {
+    _id: ObjectId('6ac5dd1e4fc81f5d6ed33d7f'),
+    rollno: 101,
+    name: 'Ashwin',
+    course: 'MCA',
+    semester: 3,
+    mark: 44
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d80'),
+    rollno: 102,
+    name: 'Nandu',
+    course: 'MCA',
+    semester: 3,
+    mark: 30
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d81'),
+    rollno: 103,
+    name: 'Tharun',
+    course: 'MCA',
+    semester: 3,
+    mark: 48
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d82'),
+    rollno: 104,
+    name: 'Gokul',
+    course: 'MCA',
+    semester: 3,
+    mark: 39
+  }
+]
+college> db.students.find({},{name:1,course:1,_id:0})
+[
+  { name: 'Ashwin', course: 'MCA' },
+  { name: 'Nandu', course: 'MCA' },
+  { name: 'Tharun', course: 'MCA' },
+  { name: 'Gokul', course: 'MCA' }
+]
+college> db.students.find({},{name:1,course:0,_id:0})
+MongoServerError[Location31254]: Cannot do exclusion on field course in inclusion projection
+college> db.students.find({semester:1})
+
+college> db.students.find({semester:3})
+[
+  {
+    _id: ObjectId('6ac5dd1e4fc81f5d6ed33d7f'),
+    rollno: 101,
+    name: 'Ashwin',
+    course: 'MCA',
+    semester: 3,
+    mark: 44
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d80'),
+    rollno: 102,
+    name: 'Nandu',
+    course: 'MCA',
+    semester: 3,
+    mark: 30
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d81'),
+    rollno: 103,
+    name: 'Tharun',
+    course: 'MCA',
+    semester: 3,
+    mark: 48
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d82'),
+    rollno: 104,
+    name: 'Gokul',
+    course: 'MCA',
+    semester: 3,
+    mark: 39
+  }
+]
+college> db.students.find({semester:3,_id:0})
+
+college> db.students.find({semester:3,_id:0})
+
+college> db.students.find({semester:3})
+[
+  {
+    _id: ObjectId('6ac5dd1e4fc81f5d6ed33d7f'),
+    rollno: 101,
+    name: 'Ashwin',
+    course: 'MCA',
+    semester: 3,
+    mark: 44
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d80'),
+    rollno: 102,
+    name: 'Nandu',
+    course: 'MCA',
+    semester: 3,
+    mark: 30
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d81'),
+    rollno: 103,
+    name: 'Tharun',
+    course: 'MCA',
+    semester: 3,
+    mark: 48
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d82'),
+    rollno: 104,
+    name: 'Gokul',
+    course: 'MCA',
+    semester: 3,
+    mark: 39
+  }
+]
+college> db.students.find({semester:3,_id:0})
+
+college> db.students.find({semester:3},{_id:0})
+[
+  { rollno: 101, name: 'Ashwin', course: 'MCA', semester: 3, mark: 44 },
+  { rollno: 102, name: 'Nandu', course: 'MCA', semester: 3, mark: 30 },
+  { rollno: 103, name: 'Tharun', course: 'MCA', semester: 3, mark: 48 },
+  { rollno: 104, name: 'Gokul', course: 'MCA', semester: 3, mark: 39 }
+]
+college> db.students.insertOne({ rollno: 106, name: "Anandhan", course: "MCA", semester: 1, mark: 44 })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6ac5e1824fc81f5d6ed33d83')
+}
+college> db.students.find({semester:1,course:"MCA"})
+[
+  {
+    _id: ObjectId('6ac5e1824fc81f5d6ed33d83'),
+    rollno: 106,
+    name: 'Anandhan',
+    course: 'MCA',
+    semester: 1,
+    mark: 44
+  }
+]
+college> db.students.find({semester:{%gt:1}})
+Uncaught:
+SyntaxError: Unexpected token (1:28)
+
+> 1 | db.students.find({semester:{%gt:1}})
+    |                             ^
+  2 |
+
+college> db.students.find({semester:{$gt:1}})
+[
+  {
+    _id: ObjectId('6ac5dd1e4fc81f5d6ed33d7f'),
+    rollno: 101,
+    name: 'Ashwin',
+    course: 'MCA',
+    semester: 3,
+    mark: 44
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d80'),
+    rollno: 102,
+    name: 'Nandu',
+    course: 'MCA',
+    semester: 3,
+    mark: 30
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d81'),
+    rollno: 103,
+    name: 'Tharun',
+    course: 'MCA',
+    semester: 3,
+    mark: 48
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d82'),
+    rollno: 104,
+    name: 'Gokul',
+    course: 'MCA',
+    semester: 3,
+    mark: 39
+  }
+]
+college> db.students.find({marks:{$gt:40}})
+
+college> db.students.find({mark:{$gt:30}})
+[
+  {
+    _id: ObjectId('6ac5dd1e4fc81f5d6ed33d7f'),
+    rollno: 101,
+    name: 'Ashwin',
+    course: 'MCA',
+    semester: 3,
+    mark: 44
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d81'),
+    rollno: 103,
+    name: 'Tharun',
+    course: 'MCA',
+    semester: 3,
+    mark: 48
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d82'),
+    rollno: 104,
+    name: 'Gokul',
+    course: 'MCA',
+    semester: 3,
+    mark: 39
+  },
+  {
+    _id: ObjectId('6ac5e1824fc81f5d6ed33d83'),
+    rollno: 106,
+    name: 'Anandhan',
+    course: 'MCA',
+    semester: 1,
+    mark: 44
+  }
+]
+college> db.students.find({semester,{$lt:5}})
+Uncaught:
+SyntaxError: Unexpected token (1:27)
+
+> 1 | db.students.find({semester,{$lt:5}})
+    |                            ^
+  2 |
+
+college> db.students.find({semester:{$lt:5}})
+[
+  {
+    _id: ObjectId('6ac5dd1e4fc81f5d6ed33d7f'),
+    rollno: 101,
+    name: 'Ashwin',
+    course: 'MCA',
+    semester: 3,
+    mark: 44
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d80'),
+    rollno: 102,
+    name: 'Nandu',
+    course: 'MCA',
+    semester: 3,
+    mark: 30
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d81'),
+    rollno: 103,
+    name: 'Tharun',
+    course: 'MCA',
+    semester: 3,
+    mark: 48
+  },
+  {
+    _id: ObjectId('6ac5de874fc81f5d6ed33d82'),
+    rollno: 104,
+    name: 'Gokul',
+    course: 'MCA',
+    semester: 3,
+    mark: 39
+  },
+  {
+    _id: ObjectId('6ac5e1824fc81f5d6ed33d83'),
+    rollno: 106,
+    name: 'Anandhan',
+    course: 'MCA',
+    semester: 1,
+    mark: 44
+  }
+]
+college> db.students.find({semester:{$lt:3}})
+[
+  {
+    _id: ObjectId('6ac5e1824fc81f5d6ed33d83'),
+    rollno: 106,
+    name: 'Anandhan',
+    course: 'MCA',
+    semester: 1,
+    mark: 44
+  }
+]
+college> db.students.updateOne({rollno:101},{$set:{semester:2}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+college> db.students.find({semester:2}0
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:29)
+
+> 1 | db.students.find({semester:2}0
+    |                              ^
+  2 |
+
+college> db.students.find({semester:2})
+[
+  {
+    _id: ObjectId('6ac5dd1e4fc81f5d6ed33d7f'),
+    rollno: 101,
+    name: 'Ashwin',
+    course: 'MCA',
+    semester: 2,
+    mark: 44
+  }
+]
+college>
