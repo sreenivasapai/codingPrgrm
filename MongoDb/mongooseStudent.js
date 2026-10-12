@@ -19,8 +19,11 @@ const Student = mongoose.model("students",studentSchema); //creates a model call
 //Insert Student Records
 const insertStudents = async() =>{
     await Student.insertMany([
-        {rollno:101,name:"Ashwin",course:"MCA ",semester:1,mark:85},
-        { rollno: 102, name: "Tharun", course: "MCA ", semester: 1, mark: 86 }
+        //{rollno:101,name:"Ashwin",course:"MCA ",semester:1,mark:85},
+        //{ rollno: 102, name: "Tharun", course: "MCA ", semester: 1, mark: 86 },
+        { rollno: 103, name: "Anandhan", course: "MCA ", semester: 1, mark: 84 },
+        { rollno: 104, name: "Nandhu", course: "MCA ", semester: 1, mark: 83 }
+
     ]);
     console.log("Records Record Inserted Successfully");  //this insertMany() method is used to insert multiple records into the student collection
 };
