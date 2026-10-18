@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+    }
+
+    
+
+    input {
+        display: block;
+        margin: 10px auto;
+        padding: 8px;
+        width: 250px;
+    }
+
+    button {
+        margin: 5px;
+        padding: 8px;
+    }
+
+    textarea {
+        display: block;
+        margin: 10px auto;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Student Grade Calculator</h2>
+
+        <form id="gradeForm" onsubmit="return false;">
+            <input type="number" id="m1"
+                   placeholder="Marks 1 (0-100)"
+                   min="0" max="100" step="any">
+
+            <input type="number" id="m2"
+                   placeholder="Marks 2 (0-100)"
+                   min="0" max="100" step="any">
+
+            <input type="number" id="m3"
+                   placeholder="Marks 3 (0-100)"
+                   min="0" max="100" step="any">
+
+            <input type="number" id="m4"
+                   placeholder="Marks 4 (0-100)"
+                   min="0" max="100" step="any">
+
+            <input type="number" id="m5"
+                   placeholder="Marks 5 (0-100)"
+                   min="0" max="100" step="any">
+
+            <br>
+
+            <button type="button" onclick="calculateTotal()">
+                Calculate Total
+            </button>
+
+            <button type="button" onclick="calculateAverage()">
+                Calculate Average
+            </button>
+
+            <button type="button" onclick="calculateGrade()">
+                Calculate Grade
+            </button>
+        </form>
+
+        <p id="error"></p>
+
+        <textarea id="result" rows="4" readonly
+                  placeholder="Result will appear here"></textarea>
+
+        <br>
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <script>
+        function getMarks() {
+            let marks = [];
+
+            for (let i = 1; i <= 5; i++) {
+                let input = document.getElementById("m" + i);
+                let value = input.value.trim();
+
+                if (value === "") {
+                    showError("Please enter all five subject marks.");
+                    input.focus();
+                    return null;
+                }
+
+                let mark = Number(value);
+
+                if (!Number.isFinite(mark) ||
+                    mark < 0 || mark > 100) {
+                    showError("Marks must be between 0 and 100.");
+                    input.focus();
+                    return null;
+                }
+
+                marks.push(mark);
+            }
+
+            showError("");
+            return marks;
+        }
+
+        function showError(message) {
+            document.getElementById("error").innerHTML = message;
+        }
+
+        function calculateTotal() {
+            let marks = getMarks();
+            if (marks === null) return;
+
+            let total = marks.reduce((sum, mark) => sum + mark, 0);
+
+            document.getElementById("result").value =
+                "Total Marks = " + total + " / 500";
+        }
+
+        function calculateAverage() {
+            let marks = getMarks();
+            if (marks === null) return;
+
+            let total = marks.reduce((sum, mark) => sum + mark, 0);
+            let average = total / 5;
+
+            document.getElementById("result").value =
+                "Average = " + average.toFixed(2) + "%";
+        }
+
+        function calculateGrade() {
+            let marks = getMarks();
+            if (marks === null) return;
+
+            let total = marks.reduce((sum, mark) => sum + mark, 0);
+            let average = total / 5;
+            let grade;
+
+            if (average >= 90) {
+                grade = "A";
+            } else if (average >= 80) {
+                grade = "B";
+            } else if (average >= 70) {
+                grade = "C";
+            } else if (average >= 60) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            document.getElementById("result").value =
+                "Total = " + total + " / 500\n" +
+                "Average = " + average.toFixed(2) + "%\n" +
+                "Grade = " + grade;
+        }
+    </script>
+</body>
+</html>
