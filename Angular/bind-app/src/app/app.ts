@@ -7,6 +7,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
+
 export class App {
-  protected readonly title = signal('bind-app');
+  name = 'Anu';
+  age = 22;
+  email = 'anu@gmail.com';
 }
