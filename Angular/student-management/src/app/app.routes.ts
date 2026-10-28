@@ -11,4 +11,3 @@ export const routes: Routes = [
   { path: 'students', component: Students },
   { path: 'courses', component: Courses }
 ];
-
