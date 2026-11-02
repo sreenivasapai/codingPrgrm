@@ -1,0 +1,12 @@
+<h2> Price Calculator</h2>
+<label>Quantity : </label>
+<input type ="number" [(ngModel)]="quantity"
+  (ngModelChange)="totalPrice = quantity * unitPrice">
+<br><br>
+
+<label>Unit Price : </label>
+<input type ="number" [(ngModel)]="unitPrice"
+  (ngModelChange)="totalPrice = quantity * unitPrice">
+<br><br>
+
+<h3>Total Price : {{totalPrice}}</h3>
